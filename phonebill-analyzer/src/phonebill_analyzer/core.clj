@@ -13,7 +13,7 @@
 (defn double-digit-format
   "Prefixs zero in the front if n is less than 10"
   [n]
-  (if (< n 10) (str "0" n) n))
+  (if (< n 10) (str "0" n) (str n)))
 
 (defn get-secs-from-time
   "Returns the number of seconds for time duration given in format HH:MM:SS"
