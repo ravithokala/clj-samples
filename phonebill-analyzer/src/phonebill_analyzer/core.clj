@@ -37,4 +37,5 @@
 
 
 (defn get-talk-times [fname]
+  "Returns the list of phone numbers sorted based on talk-time"
  (sort-by #(last %) (get-talk-times-unsorted fname)))
