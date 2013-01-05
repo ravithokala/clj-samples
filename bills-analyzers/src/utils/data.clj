@@ -9,3 +9,8 @@
     (doall
       (csv/read-csv in-file :separator \,))))
 
+(defn get-abs-path [classpath-loc]
+  "Returns the absolute path for a given classpath relative path"
+  (.getFile (-> (Thread/currentThread)
+              (.getContextClassLoader)
+              (.getResource classpath-loc))))
