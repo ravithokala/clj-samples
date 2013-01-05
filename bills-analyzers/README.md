@@ -4,7 +4,7 @@ A Clojure library designed to analyze the phone bill
 
 ## Usage
 
-(use 'phonebill-analyzer.core)
+(use 'phonebill.analyzer)
 (get-talk-times "/tmp/lyca1.txt")
 
 Sample phone bill file
