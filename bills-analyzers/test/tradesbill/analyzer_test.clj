@@ -15,6 +15,17 @@
         "XYZ TAX GAIN SCHEME - DIVIDEND" (:name first-tx)
         50.0 (:price first-tx)
         500.0 (:quantity first-tx)
-        -1 (:transaction first-tx)
-        1 (:transaction second-tx)
+        "Buy" (:transaction first-tx)
+        "Sell" (:transaction second-tx)
+        ))))
+
+(deftest testing-calucation
+  (let [txs (get-all-icici-mfs-transactions icici-mf-sample)
+        reports (get-reports txs)]
+    (testing "testing-remaining-quantity-and-amount"
+      (are [x y z] (= x ((reports z) y))
+        625.0 :buy-quantity "XYZ TAX GAIN SCHEME - DIVIDEND"
+        400.0 :sell-quantity "XYZ TAX GAIN SCHEME - DIVIDEND"
+        30000.0 :buy-amount "XYZ TAX GAIN SCHEME - DIVIDEND"
+        12000.0 :sell-amount "XYZ TAX GAIN SCHEME - DIVIDEND"
         ))))
