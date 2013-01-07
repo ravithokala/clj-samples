@@ -1,0 +1,3 @@
+Date,Stock,Action,Qty,Price,Trade Value,Brokerage incl. taxes,Order Ref. ,Settlement,Segment,DP Id - Client DP Id,Exchange
+14-Oct-2010,DQENTE,Sell,80,122.00,9760.00,94.25,20101014B500007101,201011140,Rolling,DPID-CLIENTDPID,BSE
+25-Feb-2010,FDC,Buy,60,69.95,4197.00,40.54,20100225N700000388,2010037,Rolling,DPID-CLIENTDPID,NSE
