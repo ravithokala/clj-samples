@@ -46,3 +46,19 @@
         30000.0 :buy-amount "XYZ TAX GAIN SCHEME - DIVIDEND"
         12000.0 :sell-amount "XYZ TAX GAIN SCHEME - DIVIDEND"
         ))))
+
+(deftest testing-calucation2
+  (let [txs (get-all-icici-shares-transactions icici-shares-sample)
+        reports (get-reports txs)]
+    (testing "testing-remaining-quantity-and-amount-brokerage"
+      (are [x y z] (= x ((reports z) y))
+        0.0 :buy-quantity "DQENTE"
+        80.0 :sell-quantity "DQENTE"
+        0.0 :buy-amount "DQENTE"
+        9665.75 :sell-amount "DQENTE"
+        60.0 :buy-quantity "FDC"
+        0.0 :sell-quantity "FDC"
+        4237.54 :buy-amount "FDC"
+        0.0 :sell-amount "FDC"
+        ))))
+

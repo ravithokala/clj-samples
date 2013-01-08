@@ -37,13 +37,18 @@
 
 (defn- get-total-quantity [txs]
   "Returns the total quantity of the given transactions"
-  (reduce #(+ %1 (:quantity %2)) 0 txs)
+  (reduce #(+ %1 (:quantity %2)) 0.0 txs)
   )
+
+(defn- get-amount-with-brokerage [{quantity :quantity price :price transaction :transaction brokerage :brokerage}]
+  "Returns the total amount for the trasaction after taking brokerage into consideration"
+  (if (= "Buy" transaction)
+    (+ (* quantity price) brokerage)
+    (- (* quantity price) brokerage)))
 
 (defn- get-total-amount [txs]
   "Returns the total amount for the given transactions"
-  (reduce #(+ %1 (* (:quantity %2) (:price %2))) 0 txs)
-  )
+  (reduce #(+ %1 (get-amount-with-brokerage %2)) 0.0 txs))
 
 (defn- get-report-for-same-type [records]
   (let [buy-txs (filter #(= "Buy" (:transaction %)) records)
