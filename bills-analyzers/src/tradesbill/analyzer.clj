@@ -1,5 +1,6 @@
 (ns tradesbill.analyzer
-  (:use [utils.data]))
+  (:use [utils.data]
+        [utils.math]))
 
 
 (defn get-all-transactions [filename mapping-fn]
@@ -53,10 +54,10 @@
 (defn- get-report-for-same-type [records]
   (let [buy-txs (filter #(= "Buy" (:transaction %)) records)
         sell-txs (filter #(= "Sell" (:transaction %)) records)]
-    {:buy-quantity (get-total-quantity buy-txs)
-     :sell-quantity (get-total-quantity sell-txs)
-     :buy-amount (get-total-amount buy-txs)
-     :sell-amount (get-total-amount sell-txs)
+    {:buy-quantity (round-places (get-total-quantity buy-txs) 2)
+     :sell-quantity (round-places (get-total-quantity sell-txs) 2)
+     :buy-amount (round-places (get-total-amount buy-txs) 2)
+     :sell-amount (round-places (get-total-amount sell-txs) 2)
      }))
 
 (defn get-reports [txn-records]
